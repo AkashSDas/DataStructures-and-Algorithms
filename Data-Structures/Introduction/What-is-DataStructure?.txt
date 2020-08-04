@@ -1,0 +1,31 @@
+****** What is Data Structure? ******
+
+* Contents:
+    1. What is Data Structure?
+    2. Why Data Structure?
+    3. Computational Complexity Analysis
+==================================
+*** What is Data Structure? ***
+
+- As per Wikipedia:    
+    In computer science, a data structure is a data organization, 
+    management, and storage format that enables efficient access 
+    and modification. More precisely, a data structure is a collection 
+    of data values, the relationships among them, and the functions or 
+    operations that can be applied to the data.
+    
+- In simple terms:
+    A data structure is a way of organizing data so that it can be used 
+    effectively and efficiently.
+==================================
+*** Why Data Structure? ***
+    
+- They are essential ingredients in creating fast and powerful algorithms
+- They help to manage and organize data
+- They make code cleaner and easier to understand
+==================================   
+*** Computational Complexity Analysis ***
+
+- Common Questions of Good Programmers:
+    1. How much time does this algorithm need to finish?
+    2. How much space does this algorithm need for its computation?

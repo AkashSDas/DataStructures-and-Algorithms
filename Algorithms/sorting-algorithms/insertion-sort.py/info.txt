@@ -1,0 +1,21 @@
+****** Time Complexity of Insertion Sort Algorithm ******
+
+- Insertion sort is an efficient sorting algorithm, as it does not run 
+  on preset conditions using for loops, but instead it uses one while loop, 
+  which avoids extra steps once the array gets sorted.
+
+
+- Even though insertion sort is efficient, still, if we provide an already 
+  sorted array to the insertion sort algorithm, it will still execute the outer 
+  for loop, thereby requiring n steps to sort an already sorted array of n elements, 
+  which makes its best case time complexity a linear function of n.
+===================================
+*** Complexity ***
+
+Worst Case Time Complexity [ Big-O ] : O(n^2)
+Best Case Time Complexity [Big-omega]: O(n)
+Average Time Complexity [Big-theta]  : O(n^2)
+Space Complexity                     : O(1)
+===================================
+- In the worst case scenario, an array would be sorted in reverse order. The outer 
+  for loop in the Insertion Sort function always iterates n-1 times.

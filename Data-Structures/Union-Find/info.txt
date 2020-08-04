@@ -1,0 +1,37 @@
+****** Union Find ****** 
+
+Disjoint Sets: 
+    In mathematics, two sets are sid to be disjoint sets if 
+    they have no elements in common.
+
+- What is Union Find?
+    "Union Find" is a data-structure that keeps track of elements
+    which are split into one or more disjoint sets.
+
+    It has two primary operations:
+        1. Find
+        2. Union
+
+- Where is a Union Find user?
+    - Krushal's minimum spanning tree algorithm
+    - Grid percolation
+    - Network connectivity
+    - Least common ancestor in trees
+    - Image processing
+
+ - Complexity
+    
+    α(n) - Amortized constant time
+    
+    Essentially amortised time means "average time taken per 
+    operation, if you do many operations".
+
+    Operations        | Complexity
+    =============================== 
+    Construction      | O(n)
+    Union             | α(n)         
+    Find              | α(n)
+    Get component size| α(n)
+    Check if connected| α(n)
+    Count components  | O(1)
+    

@@ -1,0 +1,71 @@
+****** Linked List ******
+
+* Contents:
+    1. What is a linked list?
+    2. Where are linked lists used?
+    3. Terminology
+    4. Singly Vs Doubly linked lists
+    5. Pros and Cons of Singly & Doubly linked lists
+    6. Implementation
+    7. Complexity
+===============================
+*** What is a linked list? ***
+
+    - A linked list is a sequential list of nodes that 
+      hold data which point to other nodes also containing data.
+===============================
+*** Where are linked list used? ***
+
+- Used in many List, Queue & Stack implementation.
+- Great for creating circular lists.
+- Can easily model real world objects such as train.
+- Used in separate chaining, which is present cretain Hashtable 
+  implementation to deal with hashing collisions.
+- Often used in the implementation of adjacency lists for graphs.
+===============================
+*** Terminology ***
+
+Head - The first node in a linked list
+Tail - The last node in a linked list
+Pointer - Reference to another node 
+Node - An object containing data and pointer(s)
+===============================
+*** Singly VS Doubly Linked Lists ***
+
+Singly Linked List:
+    - Singly linked lists only hold a reference to the next node. 
+      In the implementation you always maintain a reference to the "head" 
+      to the linked list and a reference to the "tail" node for quick 
+      additions/removals.
+    
+Doubly Linked List:
+    - With a doubly linked list each node holds a reference to the next and 
+      previous node. In the implementation you always maintain a reference to 
+      the "head" and the "tail" of the doubly linked list to do quick 
+      additions/removals from both ends of your list.
+===============================
+*** Pros and Cons Singly and Doubly Linked Lists ***
+
+Singly Linked List:
+    Pros - Use less memory. Simpler implementation
+    Cons - Cannot easily access previous elements
+    
+Doubly Linked List:
+    Pros - Can be traversed backwards
+    Cons - Take twice the memory of Singly Linked List
+===============================
+*** Implementation *** 
+
+- Insertion 
+- Deletion
+===============================
+*** Complexity ***
+
+    Operations       |  Singly Linked  | Doubly Linked
+    ===================================================
+    Search           |       O(n)      |    O(n)
+    Insert at head   |       O(1)      |    O(1)
+    Insert at tail   |       O(1)      |    O(1)
+    Remove at head   |       O(1)      |    O(1)
+    Remove at tail   |       O(n)      |    O(1)
+    Remove in middle |       O(n)      |    O(n)

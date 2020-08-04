@@ -1,0 +1,71 @@
+****** Removing elements from binary search tree(BST) ******
+
+* Contents:
+    1. Process
+    2. Searching
+    3. Remove Phase
+=============================
+*** Process ***
+
+- Removing elements from a BST can be seen as a two step process.
+    - "Find" the element we wish to remove (if it exists)
+    - "Replace" the node we want to remove with its successor (if any) 
+      to maintain the BST invariant
+=============================
+*** Searching ***
+
+- When searching our BST for a node with a particular value one of four 
+  things will happen:
+    1. We hit a "null node" at which point we know the value does not 
+       exists within our BST.
+    2. Comparator value "equal to 0" (found it).
+    3. Comparator value "less than 0" (the value, if it exists, is in 
+       the left subtree).
+    4. Comparator value "greater than 0" (the value, if it exists, is 
+       in the right subtree).
+=============================    
+*** Remove Phase ***
+
+    There are four cases in remove phase
+    
+    1. Node to remove is leaf node 
+    2. Node to remove has a right subtree but no left subtree
+    3. Node to remove has a left subtree but no right subtree    
+    4. Node to remove has both a left subtree and a right subtree
+    
+    Case 1 - Leaf node
+        - If the node we wish to remove is a leaf node then we may do 
+          so without any problem.
+        
+    Case 2 and 3 - Either the left/right child node is a subtree
+        - The successor of the node we are trying to remove in these 
+          cases will be the root node of the left/right subtree.
+        - It may be the case that we are removing the root node of the BST 
+          in this case its immediate child becomes the new root as we 
+          would except.
+        
+    Case 4 - Node to remove has a both left and right subtrees
+    
+        Question - In which subtree will the successor of the node we are 
+                   trying to remove be?
+        Answer - The answer is both, the successor can either be the largest 
+                 value in the left subtree OR the smallest value in the right 
+                 subtree.
+        
+        A justification for why there could be more than one successor is:
+            1. The largest value in the left subtree satisfies the BST 
+               invariant since it:
+                - Is larger than everything in left subtree. This follows 
+                  immediately from the definition of being the largest.
+                - Is smaller than everything found in right subtree because 
+                  it was found in the left subtree.
+    
+            Similary
+            2. The smallest value in the right subtree satisfies the BST 
+               invariant since it:
+                - Is smaller than everything in right subtree. This follows 
+                  immediately from the definition of being the smallest.
+                - Is larger than everything found in left subtree because it 
+                  was found in the right subtree.
+                
+        Conclusion - Therefore there are two possible successors.

@@ -1,0 +1,92 @@
+****** Priority Queue ******
+
+* Contents: 
+    1. What is a Priority Queue?
+    2. What is a Heap?
+    3. Where is PQ used?
+    4. Complexity of PQ with binary heap
+===================================
+*** What is a Priority Queue? ***
+
+A Priority Queue is an ADT that operates similar to a normal 
+queue except that "each element has a certain priority". 
+
+The priorities of elements in a priority queue determines 
+the order in which elements are removed from the PQ.
+
+NOTE:
+    PQ only supports "comparable data", meaning the data inserated
+    into PQ must be able to ordered in some way either from least 
+    to greatest or vice-versa.
+
+    This is so that we are able to assign relative priorities to 
+    each element.
+
+Questions:
+- How do the PQ knows which is the next smallest or the biggest 
+  element is to be removed? 
+- Does the machine resorts all the elements inside the PQ before 
+  polling operation?
+
+Answer:
+    - Answer is No, because it is highly inefficient. Instead it 
+      uses something what is called as Heap.
+===================================
+*** What is a Heap? ***
+
+A heap is a "tree" based Data Structure that satisfies the "heap 
+invariant" (also called heap property) which is - "If A is a 
+parent node of B then A is orederd with respect to B for all nodes 
+A, B in the Heap."
+    
+This property means that the value of Parent is greater than or 
+equal to child node or the other way around. 
+
+This gives us two types of heap:
+    1. Max Heap (Where parent node is always greater than the child node)
+    2. Min Heap (Where parent node is always lesser than the child node)
+    
+Heap's forms the canonical underlying data structure for PQ's. Because of 
+this PQ's are sometime called as Heap's which is incorrect since PQ is an 
+ADT (meaning that it can be implemented with other DS also).
+
+NOTE:
+    - All heaps must be tree
+    - They should follow the heap invariant
+===================================
+*** Where is a PQ used? ***
+
+- Used in certain implementations of Dijkstra's Shortest Path Algorithm.
+
+- Anytime you need the dynamically fetch the 'next best' or 'next worst' 
+  element.
+
+- Used in Huffman coding (which is often used for lossless data compression).
+    * Lossless compression is a class of data compression algorithms that 
+    allows the original data to be perfectly reconstructed from the compressed 
+    data.
+
+- Best First Search (BFS) algorithms such as AStar use PQ's to continusly grab 
+  the next most promising node.
+  
+- Used by Minimum Spanning Tree (MST) algorithms
+===================================
+*** Complexity PQ with binary heap ***
+
+    Operations                                    | Complexity
+    ============================================================
+    Binary Heap construction                      | O(n)
+    Polling                                       | O(log(n))
+    Peeking                                       | O(1)
+    Adding                                        | O(log(n))
+    Naive removing                                | O(n)
+    Advance removing with help from a hash table* | O(log(n))
+    Naive contains                                | O(n)
+    Contains check with help of a hash table*     | O(1)
+    
+    * Using a hash table to help optimize these operations does take up linear 
+    space and also adds some constant overhead to the binary heap implementation. 
+    (because you're accessing your table alot during swaps).
+    
+    Also in time-complexity we have logarithmic time-complexity since we have 
+    to restore the heap invariant.

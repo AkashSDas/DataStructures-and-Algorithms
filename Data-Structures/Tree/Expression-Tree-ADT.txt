@@ -1,0 +1,28 @@
+****** Expression Tree ADT ******
+
+Arithmetic expressions can consist of both unary (-a, n!) and binary 
+operators (a + b).
+
+Binary operators are stored in an expression tree with the left subtree 
+containing the left side of the operation and the right subtree containing 
+the right side.
+
+An expression tree is a binary tree representation of an arithmetic 
+expression that consists of various operators (+, -, *, /, %) and operands 
+comprised of single integer digits and single-letter variables within a fully 
+parenthesized expression.
+
+*** Functions and their Operations ***
+
+- ExpressionTree(expStr):
+    Builds an expression tree for the expression given in expStr. 
+    Assume the string contains a valid, fully parenthesized expression.
+
+- evaluate(varDict):
+    Evaluates the expression tree and returns the numeric result. The values of 
+    the single-letter variables are extracted from the supplied dictionary 
+    structure. An exception is raised if there is a division by zero error defined
+    variable is used.
+
+- toString():
+    Constructs and returns a string representation of the expression.

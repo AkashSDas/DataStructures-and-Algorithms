@@ -1,0 +1,14 @@
+****** Inserting elements into a Binary Search Tree(BST) ******
+
+- BST elements must be "comparable" so that we can order 
+  them inside the tree.
+
+- When inserting an element we want to compare its value to 
+  the value stored in the current node we're considering to 
+  decide on one of the following:
+
+    - Recurse down left subtree        (< case)
+    - Recurse down right subtree       (> case)
+    - Handle finding a duplicate value (= case)
+    - Create a new node                (found a null leaf)
+ 

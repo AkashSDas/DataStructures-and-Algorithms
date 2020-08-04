@@ -1,0 +1,162 @@
+****** Removing elements from Binary Heap ******
+
+
+===================================
+- When you want to remove the root node it is called as Polling.
+
+- Polling is done by following steps:
+    Step 1 − Remove root node.
+    Step 2 − Move the last element of last level to root.
+    Step 3 − Compare the value of this child node with its parent.
+    Step 4 − If value of parent is less than child, then swap them.
+    Step 5 − Repeat step 3 & 4 until Heap property holds.
+===================================
+- When we want to remove any other node except the root node.
+
+- Removing element from the Binary Heap:
+    Step 1 - We have to search for that value that we want to remove
+    Step 2 − Move the last element of last level to that position where 
+             the value that you want to remove is present.
+    Step 3 − Compare the value of this child node with its parent.
+    Step 4 − If value of parent is less than child, then swap them.
+    Step 5 − Repeat step 3 & 4 until Heap property holds.
+
+- We have to bubble up or down or no need of bubbling as per conditions.
+===================================
+*** Time Complexity ***
+
+Polling - O(log(n))
+- Since we are directly swaping and then doing the bubbling.
+
+Removing - O(n)
+- Since we have to do linear scan to find the element that we want to 
+  remove.
+===================================
+*** Better way using a HashTable ***
+
+- But there is a better of removing and improving the time complexity    
+
+1. The inefficiency of the removal algorithm comes from the fact that we have 
+   to perform linear search to find out where an element is present. What 
+   instead we did a lookup using a "Hashtable" to find out where a node is 
+   indexed at?
+    
+A hashtable provides a constant time lookup and update for a mapping from a 
+key(the node value) to a value (the index).
+    
+2. Caveat: What if there are two or more nodes with the same value?
+    
+   - Dealing with the multiple value problem:
+
+   Instead of mapping one value to one position we will value one value to 
+   multiple positions. We can maintain a "Set" or "Tree Set" of indexes for 
+   which a particular node value (key) maps to.
+        
+    Example:
+        ====================================
+        Node Value  |  Postion(s)/Index(es)
+        ====================================
+          (key)     |   (value)
+            2       |   0, 2, 6 
+            7       |   1, 4
+            11      |   3
+            13      |   5
+
+
+        If we do swapping of 7 and 13 which are in positions 4 and 5 respcectively
+        then:
+            ===================
+            Node | Postion(s)
+            ===================
+             7   | 1, 5
+             13  | 4
+                
+3. Another question: If we want to remove a repeated node in our heap, which mode 
+   do we remove and does it matter which one we pick?
+    
+   Answer: No it does not matter which node you remove as long as we satisfy the 
+           heap invariant in the end.
+
+    Example:
+            - Our PQ in binary heap form
+            ==========================
+            Node Value  |  Postion(s)
+            ==========================
+                2       |   0, 2, 6 
+                7       |   1, 4
+                11      |   3
+                13      |   5
+            
+            - Operation - insert(3)
+            ==========================
+            Node Value  |  Postion(s)
+            ==========================
+                2       |   0, 2, 6 
+                7       |   1, 4
+                11      |   3
+                13      |   5
+                3       |   7
+            Since heap invariant is not satisfied so we need to bubble up 
+            After that we get:
+            ==========================
+            Node Value  |  Postion(s)
+            ==========================
+                2       |   0, 2, 6 
+                7       |   3, 4
+                11      |   7
+                13      |   5
+                3       |   1
+            
+            - Operation - remove(2)
+            Which should be removed doesn't matter as long as we satisfy the heap invariant
+            So if we remove the 2 at position 0 we will get
+            ==========================
+            Node Value  |  Postion(s)
+            ==========================
+                2       |   2, 6 
+                7       |   3, 4
+                11      |   0
+                13      |   5
+                3       |   1
+        
+            Now we have to satisfy the heap invariant
+            After satisfying we get
+            ==========================
+            Node Value  |  Postion(s)
+            ==========================
+                2       |   0, 2
+                7       |   3, 4
+                11      |   6
+                13      |   5
+                3       |   1
+            
+            - Operation - poll()
+            ==========================
+            Node Value  |  Postion(s)
+            ==========================
+                2       |   6, 2
+                7       |   3, 4
+                11      |   0
+                13      |   5
+                3       |   1
+                
+            Now polling 2
+            ==========================
+            Node Value  |  Postion(s)
+            ==========================
+                2       |   2
+                7       |   3, 4
+                11      |   0
+                13      |   5
+                3       |   1
+            Now we have to satisfy the heap invariant
+            After satisfying we get
+            ==========================
+            Node Value  |  Postion(s)
+            ==========================
+                2       |   0
+                7       |   3, 4
+                11      |   2
+                13      |   5
+                3       |   1
+            

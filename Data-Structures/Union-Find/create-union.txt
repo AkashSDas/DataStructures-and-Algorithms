@@ -1,0 +1,104 @@
+****** Union and Find Operations ******
+
+- Bijections:
+    In mathematics, a bijection, bijective function, or 
+    one-to-one correspondence, is a function between the 
+    elements of two sets, where each element of one set 
+    is paired with exactly one element of the other set, 
+    and each element of the other set is paired with exactly 
+    one element of the first set.
+=============================
+*** Creating Union Find ***
+
+- To begin using Union Find, first construct a "bijection 
+  (a mapping)" between your objects and the intergers in the 
+  range [0, n) (n is the number of elements). 
+
+- NOTE: This step is not necessary in general, but it will 
+  allow us to construct an array-based union find which is 
+  very efficient and easy to work with.
+
+- We can randomly assign a mapping between the objects and the 
+  intergers unless each element maps to exactly one number.
+
+- Store Union Find information in an array. Each index has an 
+  associated object we can lookup through our mapping.
+
+Example:
+    NOTE: This example does not use path compression
+    NOTE: This example does not supports α(n) time complexity, 
+          since it does not uses the path compression
+
+    Objects(here letters):
+        C, A, E, J, I, B, D, F, H, G
+    Integers(randomly assigned to exactly one object):
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    
+    When stored in an Array:
+    Objects  - C, A, E, J, I, B, D, F, H, G
+    Integers - 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    Indexes  - 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+    Instructions:
+
+        1. Union(C, B)
+        Here C has a root node of 0 and B has root node 
+        of 5. Here we can make C as B's parent or other 
+        way around. Here we have made C as B's parent 
+        Changes:
+            Objects  - C, A, E, J, I, B, D, F, H, G
+            Integers - 0, 1, 2, 3, 4, 0, 6, 7, 8, 9
+            Indexes  - 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 
+
+        2. Union(E, G)
+            Here, we have made E as G's parent
+            Changes:
+                Objects  - C, A, E, J, I, B, D, F, H, G
+                Integers - 0, 1, 2, 3, 4, 0, 6, 7, 8, 2
+                Indexes  - 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 
+                
+        3. Union(G, I):
+            Here, we want to Unifiy G and I, but G's parent 
+            is E, So I's parent node will be E. 
+            NOTE: WE combine smaller groups to larger ones 
+                  and Parent of the larger group is the parent 
+                  of the smaller group.
+            Changes:
+                Objects  - C, A, E, J, I, B, D, F, H, G
+                Integers - 0, 1, 2, 3, 2, 0, 6, 7, 8, 2
+                Indexes  - 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 
+            
+        4. Union(C, I):
+            Here I is the belongs to the larger group and C is 
+            the belongs of the smaller group, so E which is parent 
+            of I, will be the parent of the C.
+            Changes:
+                Objects  - C, A, E, J, I, B, D, F, H, G
+                Integers - 2, 1, 2, 3, 2, 0, 6, 7, 8, 2
+                Indexes  - 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 
+                Note: We don't need to change interger of B
+                
+        5. Union(C, E):
+            Here we don't need to unify them since are already 
+            unified.
+
+    Summary:
+        - Find Operation:
+            To "find" which component a particular element belongs 
+            to, find the root of that component by following the 
+            parent nodes until a self loop is reached (a node who's 
+            parent is itself).
+
+        - Union Operation:
+            To "unify" two elements find which are the root nodes 
+            of each component and if the root nodes are different 
+            make one of the root nodes be the parent of the other.
+            
+    Remarks
+        - In this data structure, we do not "un-union" elements. 
+          Since it would be highly inefficient to update all the 
+          childern node.
+
+        - The number of components is equql to the number of roots
+          remaining. Also the number of root nodes never increases.
+                

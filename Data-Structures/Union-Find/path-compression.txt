@@ -1,0 +1,162 @@
+****** Path Compression ******
+
+- This is what make Union Find a remarkable data structure, 
+  this boots the efficiency of Union Find.
+===================================
+*** Example ***
+
+Operation - Take the union of E and L
+
+Arrow(->) represents pointing to (a->b a pointing to b)
+Group1 - E -> D -> C -> B -> A -> F (F is the parent node)
+Group2 - L -> K -> J -> I -> H -> G (G is the parent node) 
+
+Normally we would have found the root nodes of both E and L 
+and made one them to point to the other and the work is done.
+
+But with path compression we will do that but also we do 
+something extra.
+
+- We will find the root node of E.
+- We will make E to point to the root node(here F).
+- We will make other i.e.(D,C,B,A) to point to F(root node).
+- Now everything along the path got compressed and points to 
+    root node.
+- Now every time we look at A,B,C,D we can find the parent or 
+    the root node for that component in constant time since there 
+    is no traversing.
+- We are always unifying things and compressing them and we are 
+    not un-unifying.
+
+We will do same for Group2.
+
+Now we have the root node of both so we will make one of them to 
+point to the other one.
+
+Work is done.
+===================================
+*** Example ***
+
+* Working with regular and path compression Union Find method
+
+1. Regular Union Find method:
+    
+    Objects   - A B C D E F G H I J
+    Pointing  - 1 2 3 4 5 6 7 8 9 10
+    
+    Instructions:
+        
+        Union(A, B)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 2 3 4 5 6 7 8 9 10 
+        
+        Union(C, D)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 2 4 4 5 6 7 8 9 10
+            
+        Union(E, F)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 2 4 4 5 5 7 8 9 10
+            
+        Union(G, H)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 2 4 4 5 5 8 8 9 10
+            
+        Union(I, J)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 2 4 4 5 5 8 8 9 9
+            
+        Union(J, G)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 2 4 4 5 5 8 8 8 9 
+            
+        Union(H, F)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 2 4 4 5 5 8 5 8 9    
+            
+        Union(A, C)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 4 4 4 5 5 8 5 8 9 
+            
+        Union(D, E)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 4 4 5 5 5 8 5 8 9
+            
+        - Instructions: Union(G, B) and Union(I, J) are not 
+          completed since we have already reached the final 
+          stage.
+        
+        - To determine what group A and J are in we have to 
+          traverse a whole lot of nodes.
+
+
+2. Path Compression Union Find method:
+    
+    Objects   - A B C D E F G H I J
+    Pointing  - 1 2 3 4 5 6 7 8 9 10
+    
+    Instructions:
+        
+        Union(A, B)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 2 3 4 5 6 7 8 9 10
+            
+        Union(C, D)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 2 4 4 5 6 7 8 9 10
+            
+        Union(E, F)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 2 4 4 5 5 7 8 9 10
+            
+        Union(G, H)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 2 4 4 5 5 8 8 9 10
+            
+        Union(I, J)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 2 4 4 5 5 8 8 9 9
+            
+        Till here everything is same, But now there will 
+        be difference.
+        
+        Union(J, G)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 2 4 4 5 5 8 8 8 9
+            Now there will be path compression.
+            Pointing  - 2 2 4 4 5 5 8 8 8 8
+            Now J also points to H 
+            
+            
+        Union(H, F)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 2 4 4 5 5 8 5 8 8
+            
+        Union(A, C)
+            Objects   - A B C D E F G H I J
+            Pointing  - 2 4 4 4 5 5 8 5 8 8
+            After path compression.
+            Pointing  - 4 4 4 4 5 5 8 5 8 8
+            
+        Union(D, E)
+            Objects   - A B C D E F G H I J
+            Pointing  - 4 4 4 5 5 5 8 5 8 8
+                    
+        Union(G, B)
+            Objects   - A B C D E F G H I J
+            Pointing  - 4 4 4 5 5 5 8 5 8 8
+            After path compression.
+            Pointing  - 4 5 4 5 5 5 5 5 8 8
+            
+        Union(I, J)
+            Objects   - A B C D E F G H I J
+            Pointing  - 4 5 4 5 5 5 5 5 8 8
+            After path compression.
+            Pointing  - 4 5 4 5 5 5 5 5 5 5
+            
+In the First way we can't even complete last two instructions but 
+with path compression as long as we compress the path and 
+pointing to the root. Now there is only one root that is E and 
+almost everything(except A and C) at constant time points to E. 
+
+        

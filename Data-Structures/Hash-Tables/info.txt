@@ -1,0 +1,84 @@
+****** Hash Table ******
+
+====================================
+*** What is a Hash Table? ***
+
+- A Hash Table (HT) is a data structure that provides a mapping from key to 
+  values using a techniques called 'hasing'.
+
+Key (name)    |  Value (age)
+============================
+    'James'     |  9
+    'Ethan'     |  29
+    'Tony'      |  36
+
+- We refer to these as 'key-value pairs'.
+- Keys must be unique, but values can be repeated.
+
+- The key-value pairs you can place in a HT can be of any type. However, 
+  the keys needs to be 'hashable'.
+====================================
+*** Hash Funcion ***
+
+- A 'hash function' H(x) is a function that maps a key 'x' to a whole number 
+  in a fixed range. 
+
+Example:
+
+    H(x) = (x^2 - 6x + 9) mod 10 maps all integer keys to range [0, 9].
+
+    H(4)  = (16 - 24 + 9) mod 10 = 1
+    H(-7) = (59 + 42 + 9) mod 10 = 0
+    H(0)  = ( 0 -  0 + 9) mod 10 = 9
+    H(2)  = ( 5 - 12 + 9) mod 10 = 1
+
+- We can also define hash functions for arbitrary objects such as strings, 
+  lists, tuples, multi data objects, etc...
+
+- For a string s let H(s) be a hash function defined below where ASCII(x) returns
+  the ASCII value of the character x.
+
+  ASCII('A') = 65
+  ASCII('B') = 66
+        ...
+  ASCII('Z') = 90
+
+  function H(s):
+        s := 0
+        for char in s:
+            sum = sum + ASCII(char)
+        return sum mod 50
+
+    H('BB')  =      (66 + 66) mod 50 = 32
+    H('')    =            (0) mod 50 = 0
+    H('ABC') = (65 + 66 + 67) mod 50 = 48
+    H('Z')   =           (90) mod 50 = 40
+====================================
+*** Challenge ***
+
+Suppose we have a database of people objects with three fields: name, age and sex.
+Can you define a hash function H(person) that maps a person to the set {0,1,2,3,4,5}.
+
+    Name    | Age | Sex | Hash
+    ===========================
+    William |  21 |  M  |  ?
+    Kate    |  19 |  F  |  ?
+    Bob     |  33 |  M  |  ?
+    Rose    |  26 |  F  |  ?
+
+There are an inifinite number of possible valid hash functions H(person), here's one:
+
+    function H(person):
+        hash := person.age
+        hash  = hash + len(person.name)
+        if person.sex == 'M':
+            hash = hash + 1
+        return hash mode 6
+
+Answer:
+    Name    | Age | Sex | Hash
+    ===========================
+    William |  21 |  M  |  5
+    Kate    |  19 |  F  |  5
+    Bob     |  33 |  M  |  1
+    Rose    |  26 |  F  |  0

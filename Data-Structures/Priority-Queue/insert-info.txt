@@ -1,0 +1,66 @@
+****** Adding elements to Binary Heap ******
+
+* Some terminologies to add elements to Binary Heap efficiently
+
+1. Way of Implementing a Priority Queue
+    - PQ's are ususally implemented with heaps since this gives 
+      them the best possible time-complexity.
+    - A PQ is an ADT, hence heaps are not the only way to implement 
+      PQs. As an example we can use unsorted list, but this would not 
+      give us the best possible time complexity.
+    
+    NOTE: PQ != Heap
+
+2. There are many types of heaps we could use to implement PQ:
+    - Binary Heap
+    - Fibonacci Heap
+    - Binomial Heap
+    - Pairing Heap
+    - So on...
+    
+    For simplicity Binary Heap is good
+    
+
+3. Binary Heap:
+
+- A binary heap is a binary tree that supports the heap 
+    invariant. In a binary tree every node has exactly9 two childrens.
+
+- The bottom heaps have children but they are None/Null
+
+- A "complete binary tree" is a tree in which at every level, except 
+  possibly the last, is completely filled and all the nodes are as far 
+  left as possible.
+
+- Whenever we insert node we insert them at the bottom row as far left 
+  to meet the complete binary tree property. 
+  
+  This property is important because it gives us the insertion point 
+  no matter what is the heap shape is or what values are in it. 
+  
+  We insert the element in the same row until the row is filled up and 
+  once it is filled we go to the next row.
+
+- Binary Heap Representation:
+    - Using an array is elegant and efficient way of doing this 
+    - We can also use the index, we go through heap one level from left 
+      to right at a time where index increases in same fashion.
+    
+    Also storing Binary Heap in an array helps us to access all the 
+    childern and parent node.
+
+    Let i be the parent node index:
+        Left child index  = 2i + 1
+        Right child index = 2i + 2            
+        (zero based: Zero-based numbering or index origin = 0 is a way 
+        of numbering in which the initial element of a sequence is assigned 
+        the index 0).
+        
+
+4. NOTE:
+
+    - Always maitain the heap invariant.
+    - If you add element to binary heap and it breaks the heap invariant 
+      then it is of no use, for that whenever you add elements to binary 
+      heap you need to swap each node upwards with its parent if it is smaller 
+      than its parent this is known bubbling up or swimming or shifting up.

@@ -1,0 +1,77 @@
+****** Array ******
+
+* Contents:
+    1. What is an Array?
+    2. Static Array
+    3. Dynamic Array
+    4. Complexity
+
+====================================
+*** What is an Array? ***
+
+1. An array in a nutshell is just a container used to store something.
+
+2. This something, referred as elements of an array, can be numbers, 
+   characters, strings, booleans, objects, etc...
+
+3. It is a data structure.
+
+4. The position of an element in an array is referred as index of that 
+   element.
+====================================
+*** Static Array ***
+
+1. What is a static array?
+    A static array is an array whose length is fixed, i.e. the amount 
+    of elements that can be stored in that array is fixed.
+
+2. Static Array are given contiguous(i.e. memory blocks having 
+    consecutive addresses).
+
+3. When and where is a static array used?
+    - Used by IO routines as buffers
+    - Lookup tables and inverse lookup tables
+    - Can be used to return multiple values from a function
+    - Used in dynamic programming to cache answer to subproblems
+    - Sorting and accessing sequential data
+====================================
+*** Dynamic Array ***
+
+1. The Dynamic Array can grow and shrink in size.
+
+2. We can add and remove elements from dynamic array.
+====================================
+*** Complexity ***
+
+    Operations | Static Array | Dynamic Array
+    =========================================
+    Access     |    O(1)      |    O(1)
+    Search     |    O(n)      |    O(n)
+    Insertion  |    N/A       |    O(n)
+    Appending  |    N/A       |    O(1)
+    Deletion   |    N/A       |    O(n)
+
+    Insertion, Appending and Deletion cannot be done in static array
+    since they have a fixed length, that's why there complexity for 
+    these operations are N/A.    
+
+    Since in access operation we have the index therefore we don't need
+    to iterate through the entire array and therefore this opreation takes
+    place in constant time.
+
+    In search operation we have to iterate throught to elements to find 
+    our target(element we are searching), in the worst case the target is 
+    the last element in our array and therefore giving O(n) is the time 
+    complexity.
+
+    In insertion we are adding element to our array in the given index 
+    while doing so we have to shift elements from index to the last index 
+    so that new element can be added, in worst condition we will insert element
+    at the first index and therefore we have to shift n element and therefore we 
+    are have O(n) is the time complexity.
+
+    In appending we are always inserting the elements at the end of the array
+    which happens in constant time therefore O(1) is it's time complexity.
+
+    While deletion we have to find the target(element that we want to delete), 
+    in worst condition it is the last element, giving us the time complexity of 

@@ -1,0 +1,84 @@
+****** Tree ******
+
+* Contents:
+    1. Terminology
+    2. Binary Tree
+    3. Where are Binary Trees used?
+    4. Complexity of BSTs
+===============================        
+*** Terminology ***
+
+1. A "tree" is an "undirected graph" which satisfies any of the 
+   following definitions:
+
+    - An acyclic connected graph.
+    - A connected graph with N nodes and N-1 edges.
+    - An graph in which any two vertices are connected 
+      by exactly one path.
+    
+    
+2. Root Node:
+
+    - The root serves as a point of reference for other vertices 
+      in the tree.
+
+    - If we have a "rooted tree" then we will want to have a 
+      reference to the root node of our tree.
+
+    - It does not always matter which node is selected to be the 
+      root node because any node can root the tree (any node can 
+      become the root of the tree).
+    
+3. Child and Parent node:
+
+    - A "child" is a node extending from another node. 
+    - A "parent" is the inverse of this.
+    
+    What is the parent of the root node?
+        - It has no parent, although it may be useful to assign 
+          the parent of the node to be itself (e.g. filesystem tree).
+    
+4. Leaf node:
+    - A "leaf node" is a node with no childern.
+    
+5. Subtree:
+    - A "subtree" is a tree entirely contained within another. 
+
+    NOTE - Subtrees may consist of a single node.
+===============================        
+*** Binary Tree ***
+
+1. What is a binary tree?
+    - A "binary tree" is a tree for which every node 
+      has atmost two child nodes.
+    
+2. What is a binary search tree (BST)?
+    - A "binary search tree" is a binary tree that satisfies the 
+      "BST invariant" which is "left subtree has smaller elements 
+      and right subtree has larger elements".
+    
+- BST operations allow for duplicate values, but most of thw time we 
+  are only interested in having unique elements inside our tree. 
+===============================        
+*** Where are Binary Trees used? ***
+
+    - Binary Search Tree:
+        - Implementation of some map and set ADTs
+        - Red Black Trees
+        - AVL Trees
+        - Splay Trees
+        
+    - Used in the implementation of binary heaps
+    - Syntax trees (used by compiler and calculators)
+    - Treap - a probabilistic Data Structure (used a randomized BST)
+===============================        
+*** Complexity of BSTs ***
+
+    Operation |  Average  | Worst
+    ==============================
+    Insert    | O(log(n)) | O(n)
+    Delete    | O(log(n)) | O(n)
+    Remove    | O(log(n)) | O(n)
+    Search    | O(log(n)) | O(n)
+    
+    O(log(n)) is good but O(n) is really bad

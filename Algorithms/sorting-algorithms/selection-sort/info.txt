@@ -1,0 +1,21 @@
+****** Time Complexity of Selection Sort Algorithm ******
+
+- We can easily get the time complexity by examining the for loops in 
+  the Selection Sort algorithm. 
+
+- For a array with n elements, the outer loop iterates n times. The 
+  inner loop iterate n-1 when i is equal to 1, and then n-2 as i is equal 
+  to 2 and so forth.
+
+- The amount of comparisons are (n - 1) + (n - 2) + ... + 1, which gives 
+  the Selection Sort a time complexity of O(n^2).
+
+  Since, Sum = n-1 + n-2 + n-3 + ... + 3 + 2 + 1 
+            = n(n-1)/2
+===========================
+*** Complexity ***
+
+Worst Case Time Complexity [ Big-O ] : O(n^2)
+Best Case Time Complexity [Big-omega]: O(n^2)
+Average Time Complexity [Big-theta]  : O(n^2)
+Space Complexity                     : O(1)

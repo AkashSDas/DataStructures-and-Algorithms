@@ -1,0 +1,19 @@
+****** Kruskal Algorithm *******
+
+- Union Find Applications:
+    Kruskal's Minimum Spanning Tree
+
+    Given a graph G = (V, E) we want to find a "Minimum Spanning 
+    Tree" in the graph (it may not be unique). A minimum spanning 
+    tree is a subset of the edges which connect all vertices in the 
+    graph with the minimal total edge cost.
+    
+    - This can be done in three steps:
+
+        Setp1 - Sort edges by ascending edge weight.
+        Setp2 - Walk through the sorted edges and look at the two 
+                nodes the edge belongs to, if the nodes are already 
+                unified we don't inculde this edge, otherwise we 
+                include it and unify the nodes.
+        Setp3 - The algorithm terminates when ever edge has been 
+                processed or all the vertices have been unified.

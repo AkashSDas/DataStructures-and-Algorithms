@@ -1,0 +1,32 @@
+****** Time Complexity of Bubble Sort Algorithm ******
+
+- In Bubble Sort, n-1 comparisons will be done in the 1st pass, 
+  n-2 in 2nd pass, n-3 in 3rd pass and so on. 
+
+- So the total number of comparisons will be:
+    (n-1) + (n-2) + (n-3) + ..... + 3 + 2 + 1
+    
+    Sum = n(n-1)/2
+    i.e. O(n^2)
+
+- Hence the time complexity of Bubble Sort is O(n^2).
+
+- The main advantage of Bubble Sort is the simplicity of the algorithm.
+
+- The space complexity for Bubble Sort is O(1), because only a single 
+  additional memory space is required i.e. for temporary variable.
+
+- Also, the best case time complexity will be O(n), it is when the list 
+  is already sorted.
+==========================
+*** Complexity ***
+
+Worst Case Time Complexity [ Big-O ] : O(n^2)
+Best Case Time Complexity [Big-omega]: O(n)
+Average Time Complexity [Big-theta]  : O(n^2)
+Space Complexity                     : O(1)
+==========================
+In the worst case scenario (when the list is in reverse order), this 
+algorithm would have to swap every single item of the array. Therefore, 
+if we have n elements in our list, we would have n iterations per item - 
+thus Bubble Sort's time complexity is O(n^2).

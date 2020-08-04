@@ -1,0 +1,47 @@
+****** Turning Min PQ to Max PQ ******
+
+- Why you need to know how to convert min PQ to max PQ?
+    In standard libary of most programming languages we only 
+    get min PQ, but sometimes we need a max PQ.
+
+
+- Since elements in a priority queue are comparable they implement 
+  some sort of "comparable interface" which we can simply "negate" 
+  to achieve a Max heap.
+  
+  1. First Way:
+    Let x, y be numbers in the PQ. For a min PQ, if x<=y then x 
+    comes out of the PQ before y, so the negation of this is if 
+    x>=y then y comes out before x.
+
+    NOTE: negation of x<=y is x>y but we have used x>=y, well that 
+    one is not for comparators, if x=y wethere or not comparator 
+    is negated x will still be equal to y.
+    
+2. Alternative method:
+    In this method we negate the numbers as we insert them into the 
+    PQ and negate them again when they are taken out. This has the 
+    same effect as negating the comparators.
+    
+- Understanding the way of converting heap from min to max
+
+    Suppose "lex" is a comparator for strings which sorts strings 
+    in lexicographic order (the default in most programming languages). 
+    Then let "nlex" be the negation of "lex", also let s1 and s2 be 
+    strings.
+    
+    lex(s1, s2) = -1 if s1<s2 lexicographically
+    lex(s1, s2) = 0  if s1=s2 lexicographically    
+    lex(s1, s2) = +1 if s1>s2 lexicographically    
+    
+    nlex(s1, s2) = -(-1) = +1 if s1<s2 lexicographically    
+    nlex(s1, s2) = -(0)  = 0  if s1=s2 lexicographically    
+    nlex(s1, s2) = -(+1) = -1 if s1>s2 lexicographically    
+    
+    Example:
+        Strings - XX, A, XR, X, B, FZ
+    
+        While using lex comparator:
+            Order - A, B, FZ, X, XR, XX
+        While using nlex comparator:
+            Order - XX, XR, X, FZ, B, A

@@ -1,0 +1,162 @@
+****** Big-O Notation ******
+
+Big-O Notation gives an upper bound of the complexity in the worst case, 
+helping to quantify performance as the input size becomes arbitrarily large.
+==================================
+n - The size of the input 
+
+Complexities ordered from smallest to largest
+
+    constant time     | O(1)
+    logarithmic time  | O(log(n))
+    linear time       | O(n)
+    linearithmic time | O(nlog(n)) 
+    quadric time      | O(n^2)
+    cubic time        | O(n^3)
+    exponential time  | O(a^n), where a > 1
+    factorial time    | O(n!)
+
+The log here has base 2
+==================================
+*** Big-O Properties ***
+
+1. Ignoring constants
+
+    c - constant
+    
+    O(n + c) = O(n)
+    O(cn)    = O(n), here c > 0
+
+But in practical if your constant is in millions or billions they it would 
+affect your n.
+
+Example:
+    f - function describing running time of an algorithm
+    n - size of input 
+    
+    f(n) = 7(log(n)^3) + 15(n^2) + 2(n^3) + 8
+    
+    O(f(n)) = O(n^3)
+==================================
+*** Examples ***
+
+1. for O(1)
+
+Here no example depends in n, even the loop therefore they run in constant 
+time.
+
+a = 1 
+b = 2
+c = a + b*4
+
+i = 0
+While i < 11 Do
+    i = i + 1 
+----------------------------------
+2. for O(n)
+
+i = 0
+While i < n Do
+    i = i + 1 
+
+* Here:
+    f(n) = n (Since there will be increment of i n times, So the loop will 
+              work n times)
+    O(f(n)) = O(n)
+******************
+i = 0
+While i < n Do
+    i = i + 3 
+
+* Here: 
+    f(n) = n/3 (Since there will be increment of i n/3 times, So we are 
+                going to finish this loop 3 times faster)
+    O(f(n)) = O(n)
+----------------------------------
+3. for O(n^2)
+
+For (i=0; i<n; i=i+1)
+    For (j=0; j<n; j=j+1)
+    
+* Here:
+    f(n) = n*n = n^2 (n work done in n times)
+    O(f(n)) = O(n^2)
+
+For (i=0; i<n; i=i+1)
+    For (j=i; j<n; j=j+1)
+******************    
+* Here:
+    Here, j = i 
+    Since i goes from [0, n) the amount of looping done by second loop 
+    depends on what i is.
+    
+    If i=0, the loop does n work or if i=1 loop does n-1 work or if i=2 
+    loop does n-2 work and so on.
+    
+    or = Addition
+    
+    (n) + (n-1) + (n-2) + ... + 3 + 2 + 1 = Sum of n natural numbers = n(n+1)/2
+    
+    O(n(n+1)/2) = O((n^2)/2 + n/2) = O(n^2)
+----------------------------------
+4. for O(lon(n))
+
+Binary Search Tree Algorithm is good example
+    In a sorted array we want to find index of particular value in the array
+
+low = 0
+high = n-1 
+While low <= high Do 
+    mid = (low+mid)/2
+    If array[mid] == value: return mid
+    Else If array[mid] < value: low = mid+1 
+    Else If array[mid] > value: high = mid-1 
+return -1 //value not found
+
+The log has base 2
+O(log2(n)) = O(log(n)) 
+==================================
+*** Other examples ***
+
+----------------------------------
+1. 
+
+Adding the loops on same level and multiplying the loops on different levels
+
+i=0
+While i<n Do //This will work n times
+    j=0
+    While j<3*n Do //This will work 3n times, Since j starts with 0 
+        j = j+1
+    j=0
+    While j<2*n Do //This will work 2n times, Since j starts with 0 
+        j = j+1 
+    i = i+1
+    
+Here: 
+    f(n) = n*(3n + 2n) = 5n^2 
+    O(f(n)) = O(n^2)
+----------------------------------
+2.
+
+i=0
+While i<3*n Do //This will work 3n times
+    j=10
+    While j<=50 Do //This will work 40 times, Since j starts with 10
+        j = j+1
+    j=0 
+    While j<n*n*n Do //This will work n^3/2 times, Since j starts with 
+    0 but loop will be executed 2 times faster as j is incremented by 2.
+        j = j+2
+    i = i+1
+    
+    Here:
+        f(n) = 3n * (40 * n^3/2) = 3n/40 + 3n^4/2
+        O(f(n)) = O(n^4)
+==================================
+Few Other examples:
+
+1. Finding all subsets of a set = O(2^n)
+2. Finding all permutations of a string = O(n!)
+3. Sorting using mergesort = O(nlog(n))
+4. Iteration over all the cells in a matrix of size n by m = O(nm)

@@ -1,0 +1,29 @@
+****** Abstract Data Type ******
+
+An abstract data type (ADT) is an abstraction of a data structure 
+which provides only the interface to which a data structure must adhere to. 
+
+The interface does not give any specific details about how something should 
+be implemented or in what programming language.
+    
+Example:
+    - ADT --> Mode of transportation.
+    - There many modes of transportation like walking, train, flight, etc. 
+      these specific modes of transportation are now data structure.
+    - We wanted to go from one place to other that is our ADT
+    - How we do that, is our DS
+
+Examples:
+    Abstraction (ADT) | Implementation (DS)
+    =======================================
+    List              | Dynamic Array, Linked List
+    ---------------------------------------
+    Queue             | Linked List based Queue, Array based Queue, 
+                      | Stack based Queue
+    ---------------------------------------
+    Map               | Tree Map, Hash Map/Hash Table
+    ---------------------------------------
+    Vechicle          | Train, UFO
+
+ADT only defines how a DS should behave and what methods it should have not the 
+details surrounding how those methods are implemented.

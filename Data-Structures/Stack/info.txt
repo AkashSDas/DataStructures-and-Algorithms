@@ -1,0 +1,71 @@
+****** Stack ******
+
+* Contents:
+    1. What is a Stack?
+    2. Where is stack used?
+    3. Implementation
+    4. Complexity
+    5. Example
+
+====================================
+*** What is a Stack? ***
+
+1. A stack is a one-ended linear data structure which 
+   models a real world stack having two primary operations, 
+   namely "push" and "pop"
+
+   Push is inserting an element 
+   Pop is removing an element
+
+2. The order may be LIFO(Last In First Out) or 
+   FILO(First In Last Out)
+====================================
+*** Where is stach used? ***
+
+    - Used by undo mechanisms in text editiors
+    - Used in compiler syntax checking for matching brackets 
+      and braces
+    - Can be used to model a pile of books and plates
+    - Used behind the scenes to support recursion by keeping 
+      track of previous function calls
+    - Can be used to do a Depth First Search (DFS) on a graph
+====================================
+*** Implementation ***
+
+    1. Push
+    2. Pop
+====================================
+*** Complexity ***
+
+    Operations |  Complexity
+    ========================
+    Pushing    |    O(1)
+    Popping    |    O(1)
+    Peeking    |    O(1)
+    Searching  |    O(n)
+    Size       |    O(1)
+
+    Since while searching we have to iterate through all the elements
+    at in worst case the element might not be present in the list and 
+    thus giving us time complexity of O(n).
+====================================
+*** Example ***
+
+    Problem - Given a string made up of the following brackets: ()[]{}, 
+              determine whether the brackets properly match 
+    
+    [{}]     --> Valid
+    (()())   --> Valid
+    {]       --> Invalid
+    [()]))() --> Invalid
+    []{}({}) --> Valid
+    
+    Algorithm:
+        Let S be a stack
+        For bracket in bracket_strings:
+            rev = getReversedBracket(bracket)
+            If isLeftBracket(bracket):
+                S.push(bracket)
+            Else If S.isEmpty() or S.pop() != rev:
+                return false //Invalid
+        return S.isEmpty() //Valid if S is empty
